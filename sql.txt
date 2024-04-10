@@ -1,0 +1,55 @@
+CREATE TABLE `produtos` (
+  `id` int UNSIGNED NOT NULL,
+  `descricao` varchar(60) NOT NULL,
+  `qtd` mediumint DEFAULT NULL,
+  `valor` double DEFAULT NULL
+);
+
+
+ALTER TABLE `produtos`
+  ADD PRIMARY KEY (`id`);
+
+--------------------------------------------------------
+
+CREATE TABLE `clientes` (
+  `id` int UNSIGNED NOT NULL,
+  `cpf_cnpj` int NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `endereco` varchar(100) NOT NULL,
+  `numero` int NOT NULL,
+  `bairro` varchar(50) NOT NULL,
+  `estado` varchar(3) NOT NULL,
+  `cep` int NOT NULL,
+  `telefone` int NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `contato` varchar(100) DEFAULT NULL
+);
+
+ALTER TABLE `clientes`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `clientes`
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+
+
+---------------------------------------------------------------------
+
+CREATE TABLE `projeto003`.`vendas` ( 
+`id` INT UNSIGNED NOT NULL AUTO_INCREMENT , 
+`produto_id` INT UNSIGNED NOT NULL , 
+`cliente_id` INT UNSIGNED NOT NULL , 
+`data` DATE NOT NULL , 
+`hora` TIME NOT NULL , 
+`responsavel_vend` VARCHAR(100) NOT NULL , 
+`frete` DOUBLE NOT NULL , 
+`total_venda` DOUBLE NOT NULL , 
+PRIMARY KEY (`id`));
+
+
+ALTER TABLE `vendas` ADD CONSTRAINT `fk_vendas_produto_id` FOREIGN KEY (`produto_id`) REFERENCES `produtos`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `vendas` ADD CONSTRAINT `fk_vendas_cliente_id` FOREIGN KEY (`cliente_id`) REFERENCES `clientes`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `vendas` ADD `qtde_venda` INT NOT NULL AFTER `frete`;

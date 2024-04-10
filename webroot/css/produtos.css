@@ -1,0 +1,22 @@
+
+.visao {
+    color: black;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 300;
+    font-weight: 400;
+}
+
+.a {
+    color: black;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 300;
+    font-weight: 400;
+    background: #CEDEF2;
+    padding: 2%;
+}
+
+body {
+    background: #D5F2EA;
+}
